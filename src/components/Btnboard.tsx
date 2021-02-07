@@ -4,11 +4,11 @@ import {View, StyleSheet, FlatList} from 'react-native';
 import {COLORS, SIZES} from '../constants';
 import {buttonsData} from './buttonsData';
 import {Button} from './Button';
-import {MyContext} from '../context/myContext';
+import {MyContext, IContext} from '../context/myContext';
 
 export const Btnboard: FC = () => {
-  const {handleButton} = useContext(MyContext);
-  const handlePress = (value: number | string) => handleButton(value);
+  const {handleButton} = useContext<IContext>(MyContext);
+  const handlePress = (value: number | string): void => handleButton(value);
 
   return (
     <View style={styles.board}>

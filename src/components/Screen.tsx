@@ -2,10 +2,10 @@ import React, {FC, useContext} from 'react';
 import {Text, StyleSheet, ScrollView} from 'react-native';
 
 import {COLORS, SIZES} from '../constants';
-import {MyContext} from '../context/myContext';
+import {MyContext, IContext} from '../context/myContext';
 
 export const Screen: FC = () => {
-  const {state} = useContext(MyContext);
+  const {state} = useContext<IContext>(MyContext);
 
   const {currentOperand, prevOperand, operator, result, equal} = state;
 

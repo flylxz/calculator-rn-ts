@@ -7,22 +7,22 @@ interface Props {
   item: {
     icon?: any;
     value: string | number;
-    bgColor?: string;
+    style?: {};
     x2?: number;
   };
   handlePress: (value: string | number) => void;
 }
 
 export const Button: FC<Props> = ({
-  item: {icon, value, bgColor, x2},
+  item: {icon, value, style, x2},
   handlePress,
-}): JSX.Element => {
+}) => {
   return (
     <TouchableOpacity
       style={{
         ...styles.button,
-        backgroundColor: bgColor || COLORS.grey,
         width: x2 || SIZES.btnSize,
+        ...style,
       }}
       onPress={() => handlePress(value)}>
       <View>{icon ? icon : <Text style={styles.btnText}>{value}</Text>}</View>
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   button: {
     height: SIZES.btnSize,
     width: SIZES.btnSize,
+    backgroundColor: COLORS.grey,
     borderRadius: SIZES.radius,
     margin: SIZES.marginBtn,
     justifyContent: 'center',

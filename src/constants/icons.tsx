@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image} from 'react-native';
 import FAIcon from 'react-native-vector-icons/FontAwesome5';
-import {COLORS, SIZES} from '.';
+import {COLORS, SIZES} from './theme';
 
 const plus = <FAIcon name="plus" size={SIZES.iconSize} color={COLORS.white} />;
 
@@ -45,16 +45,20 @@ const plusMinus = (
   />
 );
 
+// const comma = (
+//   <Image
+//     source={require('../../assets/icons/comma.png')}
+//     resizeMode="contain"
+//     style={{
+//       width: SIZES.iconSize,
+//       height: SIZES.iconSize,
+//       tintColor: COLORS.white,
+//     }}
+//   />
+// );
+
 const comma = (
-  <Image
-    source={require('../../assets/icons/comma.png')}
-    resizeMode="contain"
-    style={{
-      width: SIZES.iconSize,
-      height: SIZES.iconSize,
-      tintColor: COLORS.white,
-    }}
-  />
+  <FAIcon name="comma" size={SIZES.iconSize} color={COLORS.white} />
 );
 
 export default {

@@ -1,6 +1,8 @@
 import {Alert} from 'react-native';
 
-export const resetState = (state) => {
+import {IState, IAction} from '../types/types';
+
+export const resetState = (state: IState) => {
   return {
     ...state,
     prevOperand: null,
@@ -11,7 +13,7 @@ export const resetState = (state) => {
   };
 };
 
-export const handleOperator = (state, action) => {
+export const handleOperator = (state: IState, action: IAction): IState => {
   if (
     (!state.currentOperand && action.payload === '+') ||
     (!state.currentOperand && action.payload === 'x') ||
@@ -37,7 +39,7 @@ export const handleOperator = (state, action) => {
   }
 };
 
-export const handleNumber = (state, action) => {
+export const handleNumber = (state: IState, action: IAction): IState => {
   if (state.equal) {
     return {
       ...state,
@@ -55,14 +57,14 @@ export const handleNumber = (state, action) => {
   }
 };
 
-const handleResult = {
-  '+': (state) => +state.prevOperand + +state.currentOperand,
-  '-': (state) => +state.prevOperand - +state.currentOperand,
-  x: (state) => +state.prevOperand * +state.currentOperand,
-  '/': (state) => +state.prevOperand / +state.currentOperand,
+const handleResult: any = {
+  '+': (state: IState) => +state.prevOperand + +state.currentOperand,
+  '-': (state: IState) => +state.prevOperand - +state.currentOperand,
+  x: (state: IState) => +state.prevOperand * +state.currentOperand,
+  '/': (state: IState) => +state.prevOperand / +state.currentOperand,
 };
 
-export const handleEqual = (state) => {
+export const handleEqual = (state: IState) => {
   if (state.prevOperand && state.currentOperand) {
     return {
       ...state,
@@ -75,7 +77,7 @@ export const handleEqual = (state) => {
   }
 };
 
-export const handleMR = (state) => {
+export const handleMR = (state: IState) => {
   if (state.result) {
     return {...state, memory: state.result};
   } else if (state.currentOperand) {

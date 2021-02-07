@@ -4,38 +4,40 @@ import {
   handleNumber,
   handleOperator,
   resetState,
-} from '../controllers/';
+} from '../controllers';
 
-export const reducer = (state, action) => {
+import {IState, IAction, ActionTypes} from '../types/types';
+
+export const reducer = (state: IState, action: IAction): IState => {
   switch (action.type) {
-    case 'input':
+    case ActionTypes.NUMBER_INPUT:
       return handleNumber(state, action);
-    case '+':
-      return handleOperatorperator(state, action);
-    case '-':
+    case ActionTypes.PLUS:
       return handleOperator(state, action);
-    case 'x':
+    case ActionTypes.MINUS:
       return handleOperator(state, action);
-    case '/':
+    case ActionTypes.TIMES:
       return handleOperator(state, action);
-    case '%':
+    case ActionTypes.OBELUS:
+      return handleOperator(state, action);
+    case ActionTypes.PERCENTAGE:
       return {
         ...state,
         currentOperand: (state.prevOperand * state.currentOperand) / 100,
       };
-    case '=':
+    case ActionTypes.EQUAL:
       return handleEqual(state);
-    case '+/-':
+    case ActionTypes.PLUS_MINUS:
       return {...state, currentOperand: -state.currentOperand};
-    case 'mr':
-      return handleMR(state, action);
-    case 'mc':
+    case ActionTypes.MEMORY_RECORD:
+      return handleMR(state);
+    case ActionTypes.MEMORY_CLEAR:
       return {...state, memory: null};
-    case 'm+':
+    case ActionTypes.MEMORY_PLUS:
       return {...state, currentOperand: state.memory};
-    case 'm-':
+    case ActionTypes.MEMORY_MINUS:
       return {...state, currentOperand: -state.memory};
-    case 'AC':
+    case ActionTypes.ALL_CLEAR:
       return resetState(state);
     default:
       return {...state};
