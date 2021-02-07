@@ -7,12 +7,12 @@
 
 ````sh
 $ yarn
-
+```
 3 start
 ```sh
 $ yarn start
 $ yarn android
-
+```
 ## Tech Stack
 * [React Native]
 * [TypeScript]
@@ -20,4 +20,5 @@ $ yarn android
 Todo:
 -fix many zero at start
 -fix many dots at start
+
 ````
